@@ -1,0 +1,314 @@
+<?php
+
+session_start();
+
+ //ini_set('display_errors', '1');
+
+ //ini_set('error_reporting', E_ALL);
+
+try {
+
+  $pdo = new PDO('mysql:host=mottnnkonbsmi.mysql.db;dbname=mottnnkonbsmi;charset=utf8', 'mottnnkonbsmi', 'Djerba2018');
+
+  //$pdo = new PDO('mysql:host=localhost;dbname=mot_ptv;charset=utf8', 'root', '');
+
+  //$pdo = new PDO('mysql:host=localhost;dbname=pointdevente;charset=utf8', 'root', '22168875');
+
+} catch (Exception $e) {
+
+  die('Erreur : ' . $e->getMessage());
+
+}
+
+//extension pour les tableaux dans le cas de multi-app//
+
+$tab = "ptv_";
+
+if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on')
+
+  $url = "https";
+
+else
+
+  $url = "http";
+
+
+
+// Ajoutez // à l'URL.
+
+$url .= "://";
+
+
+
+// Ajoutez l'hôte (nom de domaine, ip) à l'URL.
+
+$url .= $_SERVER['HTTP_HOST'];
+
+
+
+// Ajouter l'emplacement de la ressource demandée à l'URL
+
+$url .= $_SERVER['REQUEST_URI'];
+
+
+
+function fct_redim_image($Wmax, $Hmax, $rep_Dst, $img_Dst, $rep_Src, $img_Src, $ext)
+
+{
+
+  // ------------------------------------------------------------------
+
+  $condition = 0;
+
+
+
+  // Si certains paramètres ont pour valeur '' :
+
+  if ($rep_Dst == '') {
+
+    $rep_Dst = $rep_Src;
+
+  }  // (meme repertoire)
+
+  if ($img_Dst == '') {
+
+    $img_Dst = $img_Src;
+
+  }  // (meme nom)
+
+  if ($Wmax == '') {
+
+    $Wmax = 0;
+
+  }
+
+  if ($Hmax == '') {
+
+    $Hmax = 0;
+
+  }
+
+  // ------------------------------------------------------------------
+
+  // si le fichier existe dans le répertoire, on continue...
+
+  if (file_exists($rep_Src . $img_Src) && ($Wmax != 0 || $Hmax != 0)) {
+
+    // ----------------------------------------------------------------
+
+    // extensions acceptées : 
+
+    $ExtfichierOK = '" jpg jpeg png tmp"';  // (l espace avant jpg est important)
+
+    // extension
+
+    $tabimage = explode('.', $img_Src);
+
+    $extension = $tabimage[sizeof($tabimage) - 1];  // dernier element
+
+    $extension = strtolower($extension);  // on met en minuscule
+
+    // ----------------------------------------------------------------
+
+    // extension OK ? on continue ...
+
+    if (strpos($ExtfichierOK, $extension) != '') {
+
+      // -------------------------------------------------------------
+
+      // récupération des dimensions de l image Src
+
+      $size = getimagesize($rep_Src . $img_Src);
+
+      $W_Src = $size[0];  // largeur
+
+      $H_Src = $size[1];  // hauteur
+
+      // -------------------------------------------------------------
+
+      // condition de redimensionnement et dimensions de l image finale
+
+      // -------------------------------------------------------------
+
+      // A- LARGEUR ET HAUTEUR maxi fixes
+
+      //die("fin test debug [".$condition." (".$Wmax.", ".$Hmax.")");
+
+      if ($Wmax != 0 && $Hmax != 0) {
+
+        $ratiox = $W_Src / $Wmax;  // ratio en largeur
+
+        $ratioy = $H_Src / $Hmax;  // ratio en hauteur
+
+        $ratio = max($ratiox, $ratioy);  // le plus grand
+
+        $W = $W_Src / $ratio;
+
+        $H = $H_Src / $ratio;
+
+        $condition = ($W_Src > $W) || ($W_Src > $H);  // 1 si vrai (true)
+
+
+
+      }
+
+      // -------------------------------------------------------------
+
+      // B- LARGEUR maxi fixe
+
+      if ($Hmax != 0 && $Wmax == 0) {
+
+        $H = $Hmax;
+
+        $W = $H * ($W_Src / $H_Src);
+
+        $condition = $H_Src > $Hmax;  // 1 si vrai (true)
+
+      }
+
+      // -------------------------------------------------------------
+
+      // C- HAUTEUR maxi fixe
+
+      if ($Wmax != 0 && $Hmax == 0) {
+
+        $W = $Wmax;
+
+        $H = $W * ($H_Src / $W_Src);
+
+        $condition = $W_Src > $Wmax;  // 1 si vrai (true)
+
+      }
+
+      // -------------------------------------------------------------
+
+      // on REDIMENSIONNE si la condition est vraie
+
+      // -------------------------------------------------------------
+
+      //die($ext);
+
+      $ext = strtolower($ext);
+
+      $tmpp2 = "";
+
+      $tmpp = "";
+
+      if ($ext == "png") {
+
+        $tmpp = "tmp";
+
+      } else {
+
+        $tmpp2 = "tmp";
+
+      }
+
+      if ($condition == 1) {
+
+        // création de la ressource-image"Src" en fonction de l extension
+
+        // et on crée une ressource-image"Dst" vide aux dimensions finales
+
+        switch ($extension) {
+
+          case 'jpg':
+
+          case $tmpp2:
+
+          case 'jpeg':
+
+            $Ress_Src = imagecreatefromjpeg($rep_Src . $img_Src);
+
+            $Ress_Dst = ImageCreateTrueColor($W, $H);
+
+            break;
+
+          case 'png':
+
+          case $tmpp;
+
+            $Ress_Src = imagecreatefrompng($rep_Src . $img_Src);
+
+            $Ress_Dst = ImageCreateTrueColor($W, $H);
+
+            // fond transparent (pour les png avec transparence)
+
+            imagesavealpha($Ress_Dst, true);
+
+            $trans_color = imagecolorallocatealpha($Ress_Dst, 0, 0, 0, 127);
+
+            imagefill($Ress_Dst, 0, 0, $trans_color);
+
+            break;
+
+        }
+
+        // ----------------------------------------------------------
+
+        // REDIMENSIONNEMENT (copie, redimensionne, ré-echantillonne)
+
+        ImageCopyResampled($Ress_Dst, $Ress_Src, 0, 0, 0, 0, $W, $H, $W_Src, $H_Src);
+
+        // ----------------------------------------------------------
+
+        // ENREGISTREMENT dans le répertoire (avec la fonction appropriée)
+
+        switch ($extension) {
+
+          case 'jpg':
+
+          case 'tmp':
+
+          case 'jpeg':
+
+            ImageJpeg($Ress_Dst, $rep_Dst . $img_Dst);
+
+            break;
+
+          case 'png':
+
+            imagepng($Ress_Dst, $rep_Dst . $img_Dst);
+
+            break;
+
+        }
+
+        // ----------------------------------------------------------
+
+        // libération des ressources-image
+
+        imagedestroy($Ress_Src);
+
+        imagedestroy($Ress_Dst);
+
+      }
+
+      // -------------------------------------------------------------
+
+    }
+
+  }
+
+  // --------------------------------------------------------------------------------------------------
+
+  // retourne : 1 (vrai) si le redimensionnement et l enregistrement ont bien eu lieu, sinon rien (false)
+
+  // si le fichier a bien été créé
+
+
+
+  if ($condition == 1 && file_exists($rep_Dst . $img_Dst)) {
+
+    return true;
+
+  } else {
+
+    return false;
+
+  }
+
+}
+
+include('bibliotheque/chiffre_lettre.php');
+

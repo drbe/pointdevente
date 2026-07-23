@@ -1,0 +1,1120 @@
+/* Empêcher l'ascenseur horizontal */
+html, body {
+    overflow-x: hidden;
+    max-width: 100%;
+    width: 100%;
+}
+
+/* S'assurer que tous les éléments respectent la largeur maximale */
+* {
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #ffffff;
+    color: #212529;
+}
+
+@media print {
+    .no_print {
+        display: none !important;
+    }
+
+    .pop_up {
+        position: unset !important;
+        top: 0px !important;
+        left: 0px !important;
+        width: 100% !important;
+        padding: 0px !important;
+        border-radius: none !important;
+        box-shadow: none !important;
+        border: none !important;
+        height: none !important;
+    }
+}
+
+h1,
+h4 {
+    color: #6c757d;
+    background-color: transparent;
+}
+
+/* Adapter les couleurs pour les deux thèmes */
+body.light-theme h1,
+body.light-theme h4 {
+    color: #6c757d !important;
+    background-color: transparent !important;
+}
+
+body.dark-theme {
+    background-color: #1a1a1a;
+    color: #e9ecef;
+}
+
+body.dark-theme h1,
+body.dark-theme h4 {
+    color: #ccc;
+    background-color: #333;
+}
+
+
+
+.famille,
+
+.produit {
+
+    height: 74px;
+
+    border: 1px solid #dee2e6;
+
+    width: 160px;
+
+    background-color: #f8f9fa;
+
+}
+
+body.light-theme .famille,
+body.light-theme .produit {
+    border: 1px solid #dee2e6;
+    background-color: #f8f9fa;
+}
+
+body.dark-theme .famille,
+body.dark-theme .produit {
+    border: 1px solid #555;
+    background-color: transparent;
+}
+
+
+
+.piste {
+
+    margin-left: 30px;
+
+    margin-right: 30px;
+
+}
+
+
+
+.achat .row .col,
+
+.achat .row .col-5 {
+
+    cursor: pointer;
+
+    background-color: rgba(0, 123, 255, .1);
+
+    border: 1px solid rgba(0, 123, 255, .2);
+
+}
+
+body.light-theme .achat .row .col,
+body.light-theme .achat .row .col-5 {
+    background-color: rgba(0, 123, 255, .1);
+    border: 1px solid rgba(0, 123, 255, .2);
+}
+
+body.light-theme .achat .row .col:hover,
+body.light-theme .achat .row .col-5:hover {
+    background-color: rgba(0, 123, 255, .3);
+    border: 1px solid rgba(0, 123, 255, .3);
+}
+
+.achat .row .col:hover,
+
+.achat .row .col-5:hover {
+
+    background-color: rgba(0, 123, 255, .3);
+
+    border: 1px solid rgba(0, 123, 255, .3);
+
+}
+
+body.dark-theme .achat .row .col,
+body.dark-theme .achat .row .col-5 {
+    background-color: rgba(86, 61, 124, .15);
+    border: 1px solid rgba(86, 61, 124, .2);
+}
+
+body.dark-theme .achat .row .col:hover,
+body.dark-theme .achat .row .col-5:hover {
+    background-color: rgba(86, 61, 124);
+    border: 1px solid rgba(86, 61, 124, .2);
+}
+
+
+
+.total {
+
+    color: #dc3545;
+
+}
+
+body.light-theme .total {
+    color: #dc3545;
+}
+
+body.dark-theme .total {
+    color: #ef5350;
+}
+
+
+
+.img_famille,
+
+.img_produit {
+
+    width: 72px;
+
+    height: 72px;
+
+}
+
+
+
+.couleur-0 {
+
+    background-color: #f0f0f0;
+
+    cursor: pointer;
+
+}
+
+body.light-theme .couleur-0 {
+    background-color: #f0f0f0;
+}
+
+body.dark-theme .couleur-0 {
+    background-color: #333;
+}
+
+
+
+.couleur-1 {
+
+    background-color: #e0e0e0;
+
+    cursor: pointer;
+
+}
+
+body.light-theme .couleur-1 {
+    background-color: #e0e0e0;
+}
+
+body.dark-theme .couleur-1 {
+    background-color: #666;
+}
+
+
+
+.famille:hover,
+
+.produit:hover,
+
+.couleur-1:hover,
+
+.couleur-0:hover {
+
+    background-color: #d0d0d0;
+
+    cursor: pointer;
+
+}
+
+body.light-theme .famille:hover,
+body.light-theme .produit:hover,
+body.light-theme .couleur-1:hover,
+body.light-theme .couleur-0:hover {
+    background-color: #d0d0d0;
+    cursor: pointer;
+}
+
+body.dark-theme .famille:hover,
+body.dark-theme .produit:hover,
+body.dark-theme .couleur-1:hover,
+body.dark-theme .couleur-0:hover {
+    background-color: #555;
+    cursor: pointer;
+}
+
+
+
+
+
+.famille .produit {
+
+    width: 190px !important;
+
+}
+
+
+
+.ajx_nom_produit {
+
+    margin-left: 10px;
+
+    overflow-wrap: break-word;
+
+    width: 100px;
+
+    overflow: hidden;
+
+    line-height: 0.9;
+
+    height: 55px;
+
+}
+
+
+
+.ajx_total {
+
+    width: 90px;
+
+    MARGIN-LEFT: 74PX;
+
+    MARGIN-TOP: -22PX;
+
+}
+
+
+
+.total_tab {
+
+    background-color: #f8f9fa;
+
+    font-weight: bold;
+
+    color: #212529;
+
+    border: 2px solid #dee2e6;
+
+}
+
+body.light-theme .total_tab {
+    background-color: #f8f9fa;
+    border: 2px solid #dee2e6;
+    font-weight: bold;
+    color: #212529;
+}
+
+body.dark-theme .total_tab {
+    background-color: #343a40;
+    border: 2px solid #495057;
+    font-weight: bold;
+    color: #e9ecef;
+}
+
+
+
+.ligne_liste:hover {
+
+    background-color: #e9ecef;
+
+    color: #212529;
+
+}
+
+body.light-theme .ligne_liste {
+    background-color: #ffffff;
+    color: #212529;
+}
+
+body.light-theme .ligne_liste:hover {
+    background-color: #e9ecef;
+    color: #212529;
+}
+
+body.dark-theme .ligne_liste {
+    background-color: transparent;
+    color: #e9ecef;
+}
+
+body.dark-theme .ligne_liste:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #e9ecef;
+}
+
+
+
+/* ===========================================
+   THÈME DARK/LIGHT - Styles globaux
+   =========================================== */
+
+/* Thème Clair (par défaut) */
+body.light-theme {
+    background-color: #ffffff;
+    color: #212529;
+}
+
+body.light-theme .navbar {
+    background-color: #007bff !important;
+    border-bottom: 1px solid #0056b3;
+}
+
+body.light-theme .navbar-brand,
+body.light-theme .navbar-nav .nav-link {
+    color: #ffffff !important;
+}
+
+body.light-theme .navbar-nav .nav-link:hover {
+    color: #e9ecef !important;
+}
+
+body.light-theme .card {
+    background-color: #ffffff;
+    border-color: #dee2e6;
+    color: #212529;
+}
+.table-hover tbody tr:hover {
+    color: inherit !important;
+    background-color: rgba(0, 0, 0, 0.02);
+}
+body.light-theme .card-header {
+    background-color: #f8f9fa !important;
+    border-bottom-color: #dee2e6;
+    color: #495057;
+}
+
+body.light-theme .table {
+    color: #212529;
+}
+
+body.light-theme .table thead {
+    background-color: #e9ecef;
+    color: #495057;
+    font-weight: 600;
+}
+
+body.light-theme .table thead th {
+    border-bottom: 2px solid #dee2e6;
+}
+#navbarSupportedContent .btn-outline-secondary {
+    color: #ffffff;
+    border-color: #ffffff;
+}
+body.light-theme .btn-outline-secondary {
+    color: #6c757d;
+    border-color: #6c757d;
+}
+
+body.light-theme .text-muted {
+    color: #6c757d !important;
+}
+
+body.light-theme .table-primary {
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%) !important;
+    color: #ffffff !important;
+}
+
+body.light-theme .badge {
+    background-color: #6c757d !important;
+    color: #ffffff;
+}
+
+body.light-theme .table.table-dark,
+body.light-theme .table-dark {
+    background-color: transparent;
+    color: #212529;
+}
+
+body.light-theme .table.table-dark thead,
+body.light-theme .table-dark thead {
+    background-color: #e9ecef;
+    color: #212529;
+}
+
+body.light-theme .table.table-dark tbody tr {
+    background-color: #ffffff;
+}
+
+body.light-theme .table.table-dark tbody tr:nth-child(odd) {
+    background-color: #f8f9fa;
+}
+
+body.light-theme .table.table-dark tbody tr:hover {
+    background-color: #e9ecef;
+}
+
+body.light-theme .alert {
+    background-color: #e2e3e5;
+    color: #212529;
+    border-color: #d3d6db;
+}
+
+body.light-theme .alert.alert-primary {
+    background-color: #cfe2ff;
+    color: #084298;
+}
+
+body.light-theme .alert.alert-secondary {
+    background-color: #e2e3e5;
+    color: #41464b;
+}
+
+body.light-theme .input-group-text,
+body.light-theme .form-control,
+body.light-theme .custom-select,
+body.light-theme .custom-file-label {
+    background-color: #ffffff;
+    color: #212529;
+    border-color: #ced4da;
+}
+
+body.light-theme .custom-file-input:lang(en) ~ .custom-file-label::after {
+    background-color: #e9ecef;
+    color: #212529;
+}
+
+/* Styles pour les icônes en mode clair */
+body.light-theme .fa-pencil-alt {
+    color: #28a745 !important;
+}
+
+body.light-theme .fa-pencil-alt:hover {
+    color: #1e7e34 !important;
+}
+
+body.light-theme .fa-trash-alt {
+    color: #dc3545 !important;
+}
+
+body.light-theme .fa-trash-alt:hover {
+    color: #c71c36 !important;
+}
+
+/* Styles pour les classes de couleur */
+body.light-theme .green {
+    color: #28a745 !important;
+}
+
+body.light-theme .red {
+    color: #dc3545 !important;
+}
+
+/* Styles pour les lignes de listes */
+body.light-theme .ligne_liste {
+    background-color: #ffffff;
+    color: #212529;
+}
+
+body.light-theme .ligne_liste:hover {
+    background-color: #e9ecef;
+    color: #212529;
+}
+
+/* Styles pour les totaux des tableaux */
+body.light-theme .total_tab {
+    background-color: #f8f9fa;
+    border: 2px solid #dee2e6;
+    font-weight: bold;
+    color: #212529;
+}
+
+/* Styles pour les liens dans les tableaux */
+body.light-theme a {
+    color: #0056b3;
+    text-decoration: none;
+}
+
+body.light-theme a:hover {
+    color: #004085;
+    text-decoration: underline;
+}
+
+body.light-theme .table a {
+    color: #0056b3;
+}
+
+body.light-theme .table a:hover {
+    color: #004085;
+}
+
+/* Styles pour les conteneurs */
+body.light-theme .piste {
+    background-color: #ffffff;
+}
+
+/* Form controls */
+body.light-theme .form-control:focus,
+body.light-theme .custom-select:focus,
+body.light-theme .input-group-text:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Espaces pour les icônes */
+.fas, .far, .fab {
+    margin-right: 0.25rem;
+}
+
+/* Compactage du contenu */
+.container-fluid {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.piste {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.card-body {
+    padding: 1rem 0.75rem;
+}
+
+.table th, .table td {
+    padding: 0.5rem 0.25rem;
+    font-size: 0.875rem;
+}
+
+.card-header {
+    padding: 0.75rem 1rem;
+}
+
+.card-footer {
+    padding: 0.5rem 1rem;
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+    .piste {
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+
+    .container-fluid {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    .table th, .table td {
+        padding: 0.25rem;
+        font-size: 0.8rem;
+    }
+}
+
+/* Thème Sombre */
+body.dark-theme {
+    background-color: #1a1a1a;
+    color: #e9ecef;
+}
+
+body.dark-theme .navbar {
+    background-color: #2d3436 !important;
+    border-bottom: 1px solid #495057;
+}
+
+body.dark-theme .navbar-brand,
+body.dark-theme .navbar-nav .nav-link {
+    color: #e9ecef !important;
+}
+
+body.dark-theme .card {
+    background-color: #2d3436;
+    border-color: #495057;
+    color: #e9ecef;
+}
+
+body.dark-theme .card-header {
+    background-color: #343a40 !important;
+    border-bottom-color: #495057;
+    color: #e9ecef;
+}
+
+body.dark-theme .table {
+    color: #e9ecef;
+}
+
+body.dark-theme .table thead {
+    background-color: #343a40;
+    color: #e9ecef;
+}
+
+body.dark-theme .table tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+body.dark-theme .table-primary {
+    background: linear-gradient(135deg, #0056b3 0%, #003d82 100%) !important;
+    color: #ffffff !important;
+}
+
+body.dark-theme .badge {
+    background-color: #6c757d !important;
+    color: #ffffff;
+}
+
+body.dark-theme .card-footer {
+    background-color: #343a40;
+    border-top-color: #495057;
+    color: #e9ecef;
+}
+
+body.dark-theme .pagination .page-link {
+    background-color: #495057;
+    border-color: #6c757d;
+    color: #e9ecef;
+}
+
+body.dark-theme .pagination .page-link:hover {
+    background-color: #6c757d;
+    color: #ffffff;
+}
+
+body.dark-theme .pagination .page-item.active .page-link {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+/* Styles pour les icônes en mode sombre */
+body.dark-theme .fa-pencil-alt {
+    color: #66bb6a !important;
+}
+
+body.dark-theme .fa-pencil-alt:hover {
+    color: #81c784 !important;
+}
+
+body.dark-theme .fa-trash-alt {
+    color: #ef5350 !important;
+}
+
+body.dark-theme .fa-trash-alt:hover {
+    color: #e57373 !important;
+}
+
+/* Styles pour les classes de couleur */
+body.dark-theme .green {
+    color: #66bb6a !important;
+}
+
+body.dark-theme .red {
+    color: #ef5350 !important;
+}
+
+/* Styles pour les lignes de listes */
+body.dark-theme .ligne_liste {
+    background-color: transparent;
+    color: #e9ecef;
+}
+
+body.dark-theme .ligne_liste:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #e9ecef;
+}
+
+/* Styles pour les totaux des tableaux */
+body.dark-theme .total_tab {
+    background-color: #343a40;
+    border: 2px solid #495057;
+    font-weight: bold;
+    color: #e9ecef;
+}
+
+/* Styles pour les liens dans les tableaux */
+body.dark-theme a {
+    color: #66b3ff;
+    text-decoration: none;
+}
+
+body.dark-theme a:hover {
+    color: #99ccff;
+    text-decoration: underline;
+}
+
+body.dark-theme .table a {
+    color: #66b3ff;
+}
+
+body.dark-theme .table a:hover {
+    color: #99ccff;
+}
+
+/* Styles pour les conteneurs */
+body.dark-theme .piste {
+    background-color: #1a1a1a;
+}
+
+/* Form controls */
+body.dark-theme .form-control:focus,
+body.dark-theme .custom-select:focus,
+body.dark-theme .input-group-text:focus {
+    border-color: #0056b3;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Améliorations générales pour les deux thèmes */
+.table-responsive {
+    border-radius: 0.375rem;
+    overflow: hidden;
+    overflow-x: hidden;
+}
+
+.card {
+    border-radius: 0.5rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+.card-header {
+    border-radius: 0.5rem 0.5rem 0 0 !important;
+}
+
+.card-footer {
+    border-radius: 0 0 0.5rem 0.5rem;
+}
+
+/* Boutons d'action dans les tableaux */
+.fa-pencil-alt, .fa-trash-alt {
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.fa-pencil-alt:hover {
+    color: #28a745 !important;
+}
+
+.fa-trash-alt:hover {
+    color: #dc3545 !important;
+}
+    border-color: #0d6efd;
+    color: #e9ecef;
+}
+
+/* Titres en gris clair sur blanc pour thème clair */
+body.light-theme h1,
+body.light-theme h2,
+body.light-theme h3,
+body.light-theme h4,
+body.light-theme h5,
+body.light-theme h6 {
+    color: #6c757d !important;
+}
+
+/* Titres en blanc pour thème sombre */
+body.dark-theme h1,
+body.dark-theme h2,
+body.dark-theme h3,
+body.dark-theme h4,
+body.dark-theme h5,
+body.dark-theme h6 {
+    color: #e9ecef !important;
+}
+
+/* Transitions pour les changements de thème */
+* {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Bouton de toggle du thème */
+#theme-toggle {
+    transition: all 0.3s ease;
+}
+
+#theme-toggle:hover {
+    transform: scale(1.1);
+}
+
+
+
+@media only screen and (max-width: 532px) {
+
+    .prix_tot {
+
+        background-color: chartreuse;
+
+        position: fixed;
+
+        bottom: 0px;
+
+        left: 0;
+
+        z-index: 1000;
+
+        text-align: center;
+
+    }
+
+
+
+    .copy_right {
+
+        margin-bottom: 23px;
+
+    }
+
+}
+
+
+
+/*pick color*/
+
+
+
+#div-bg {
+
+    height: 200px;
+
+    width: 200px;
+
+    border: 1px solid black;
+
+    display: inline-block;
+
+    box-sizing: border-box;
+
+}
+
+
+
+#btn-color-picker {
+
+    background: none;
+
+    border: #000 1px solid;
+
+    padding: 2px;
+
+    cursor: pointer;
+
+}
+
+
+
+.pop_up {
+
+    position: fixed;
+
+    top: 50px;
+
+    left: 50px;
+
+    width: 89%;
+
+    /* padding: 20px; */
+
+    background-color: #fff;
+
+    border-radius: 20px;
+
+    box-shadow: 0px 0px 10px grey;
+
+    border: 5px solid #000;
+
+    z-index: 10;
+
+    color: #000;
+
+    height: 85%;
+
+    overflow: hidden;
+
+    display: none;
+
+
+
+}
+
+
+
+#pop_up {
+
+    height: 100%;
+
+}
+
+
+
+.pop_up .topHeader {
+
+    height: 40px;
+
+}
+
+
+
+#pop_up .pop_upContainer {
+
+    overflow-y: auto;
+
+    height: calc(100% - 40px);
+
+    padding: 10px;
+
+    overflow-x: hidden;
+
+}
+
+
+
+.btnProduit {
+
+    position: absolute;
+
+    top: 5px;
+
+}
+
+
+
+#x {
+
+    color: #2d2d2d;
+
+    font-weight: bold;
+
+    border: 2px solid #acacac;
+
+    width: 30px;
+
+    height: 30px;
+
+    padding-left: 2px;
+
+    border-radius: 20px;
+
+    background-color: lightgray;
+
+    cursor: pointer;
+
+    margin-top: 3px;
+
+    position: relative;
+
+    z-index: 14;
+
+    float: right;
+
+    right: 18px;
+
+    font-size: 17px;
+
+}
+
+
+
+#x:hover {
+
+    color: red;
+
+    border: 2px solid #000;
+
+    background-color: #fff;
+
+    cursor: pointer;
+
+}
+
+
+
+.red {
+
+    color: red;
+
+    cursor: pointer;
+
+}
+
+
+
+.green {
+
+    color: green;
+
+    cursor: pointer;
+
+}
+
+
+
+i {
+
+    cursor: pointer;
+
+}
+
+/* Styles pour les cartes d'accueil (icones du menu) */
+.icon-card {
+    border: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+body.light-theme .icon-card {
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    color: #212529;
+}
+
+body.light-theme .icon-card:hover {
+    background-color: #f8f9fa;
+    border-color: #007bff;
+}
+
+body.light-theme .icon-card i {
+    color: #007bff;
+}
+
+body.dark-theme .icon-card {
+    background-color: #2d3436;
+    border: 1px solid #495057;
+    color: #e9ecef;
+}
+
+body.dark-theme .icon-card:hover {
+    background-color: #343a40;
+    border-color: #66b3ff;
+}
+
+body.dark-theme .icon-card i {
+    color: #66b3ff;
+}
+
+.icon-card .card-body {
+    text-align: center;
+    padding: 1.5rem;
+}
+
+.icon-card h5 {
+    margin-top: 1rem;
+    font-weight: 600;
+    margin: 1rem 0 0 0;
+}
+
+/* Grille responsive pour les cartes */
+@media (max-width: 576px) {
+    .icon-card {
+        min-height: 120px;
+    }
+    
+    .icon-card i {
+        font-size: 1.5rem !important;
+    }
+    
+    .icon-card h5 {
+        font-size: 0.9rem;
+    }
+}
+
+@media (min-width: 577px) and (max-width: 768px) {
+    .icon-card {
+        min-height: 140px;
+    }
+}
+
+
+
+/*pick color*/
