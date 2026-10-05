@@ -301,9 +301,16 @@ window.addEventListener('load', function() {
                                   "&recherche_date=" . urlencode((isset($_GET['recherche_date'])? $_GET['recherche_date'] : date("Y-m-d"))) .
                                   "&recherche_date_fin=" . urlencode((isset($_GET['recherche_date_fin'])? $_GET['recherche_date_fin'] : date("Y-m-d"))) .
                                   "&order=" . urlencode(isset($_GET['order']) ? $_GET['order'] : 'id');
+
+                    $export_zip_url = "export_zip_pdf.php?type=" . urlencode($type) .
+                                      "&recherche_date=" . urlencode((isset($_GET['recherche_date'])? $_GET['recherche_date'] : date("Y-m-d"))) .
+                                      "&recherche_date_fin=" . urlencode((isset($_GET['recherche_date_fin'])? $_GET['recherche_date_fin'] : date("Y-m-d")));
                     ?>
-                    <a href="<?php echo $export_url; ?>" class="btn btn-outline-primary">
-                        <i class="fas fa-download me-1"></i>Excel
+                    <a href="<?php echo $export_url; ?>" class="btn btn-outline-primary" title="Exporter la liste au format Excel">
+                        <i class="fas fa-file-excel me-1"></i>Excel
+                    </a>
+                    <a href="<?php echo $export_zip_url; ?>" class="btn btn-danger text-nowrap" title="Télécharger toutes les factures de la période sous forme de fichiers PDF individuels dans une archive ZIP">
+                        <i class="fas fa-file-archive me-1"></i>ZIP (PDFs)
                     </a>
                 </div>
             </form>

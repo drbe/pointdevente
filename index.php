@@ -88,7 +88,7 @@
 
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-    <link href="css/css.css" rel="stylesheet">
+    <link href="css/css.css?v=1.1" rel="stylesheet">
 
 	<script src="js/jquery.min.js"></script>
 

@@ -6,7 +6,7 @@
   <div class="col-8">
   <div class="form-group">
 				<select name="liste_client" class="form-control" id="liste_client" placeholder="Selectionner votre client">
-				<option disabled selected>Selectionner votre client</option>
+				<option value="" disabled selected>Selectionner votre client</option>
 			<?php
 			$reponse = $pdo->query("SELECT * FROM ".$tab."client ");
 			while ($donnees = $reponse->fetch())

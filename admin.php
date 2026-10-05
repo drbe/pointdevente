@@ -80,7 +80,7 @@ if (isset($_GET['deconnexion'])) {
     }
   </style>
   <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/css.css" rel="stylesheet">
+  <link href="css/css.css?v=1.1" rel="stylesheet">
   <link href="css/bootstrap-colorpicker.min.css" rel="stylesheet">
   <link href="bibliotheque/fontawesome/css/all.css" rel="stylesheet">
   <script src="js/jquery.min.js"></script>
@@ -121,57 +121,57 @@ if (isset($_GET['deconnexion'])) {
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="admin.php">Accueil <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="admin.php"><i class="fas fa-home text-primary mr-1"></i> Accueil <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Fichier
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownFile" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-folder-open text-warning mr-1"></i> Fichier
               </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a href="?menu=familles" class="dropdown-item" href="#">Familles</a>
-                <a href="?menu=produits" class="dropdown-item" href="#">Produits</a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownFile">
+                <a href="?menu=familles" class="dropdown-item"><i class="fas fa-boxes text-navy mr-2"></i> Familles</a>
+                <a href="?menu=produits" class="dropdown-item"><i class="fas fa-cube text-cyan mr-2"></i> Produits</a>
                 <div class="dropdown-divider"></div>
-                <a href="?menu=ventes&type=1" class="dropdown-item" href="#">Facture</a>
-                <a href="?menu=ventes&type=2" class="dropdown-item" href="#">Devis</a>
-                <a href="?menu=ventes&type=3" class="dropdown-item" href="#">Bon de commande</a>
-                <a href="?menu=ventes&type=4" class="dropdown-item" href="#">Bon de livraison</a>
-                <a href="?menu=ventes" class="dropdown-item" href="#">Tout</a>
+                <a href="?menu=ventes&type=1" class="dropdown-item"><i class="fas fa-file-invoice text-danger mr-2"></i> Facture</a>
+                <a href="?menu=ventes&type=2" class="dropdown-item"><i class="fas fa-file-alt text-teal mr-2"></i> Devis</a>
+                <a href="?menu=ventes&type=3" class="dropdown-item"><i class="fas fa-shopping-cart text-amber mr-2"></i> Bon de commande</a>
+                <a href="?menu=ventes&type=4" class="dropdown-item"><i class="fas fa-truck text-primary mr-2"></i> Bon de livraison</a>
+                <a href="?menu=ventes" class="dropdown-item"><i class="fas fa-list text-pink mr-2"></i> Tout</a>
                 <div class="dropdown-divider"></div>
-                <a href="?menu=clients" class="dropdown-item" href="#">Clients</a>
+                <a href="?menu=clients" class="dropdown-item"><i class="fas fa-users text-success mr-2"></i> Clients</a>
                 <div class="dropdown-divider"></div>
-                <a href="?menu=utilisateurs" class="dropdown-item" href="#">Utilisateurs</a>
+                <a href="?menu=utilisateurs" class="dropdown-item"><i class="fas fa-user-tie text-purple mr-2"></i> Utilisateurs</a>
               </div>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="index.php">Point de vente</a>
+              <a class="nav-link" href="index.php"><i class="fas fa-cash-register text-success mr-1"></i> Point de vente</a>
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Statistique
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownStats" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-chart-line text-info mr-1"></i> Statistique
               </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="?menu=stats&type=produits">Meilleur vente par produit</a>
-                <a class="dropdown-item" href="?menu=stats&type=familles">Meilleur vente par famille</a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownStats">
+                <a class="dropdown-item" href="?menu=stats&type=produits"><i class="fas fa-chart-bar text-indigo mr-2"></i> Meilleur vente par produit</a>
+                <a class="dropdown-item" href="?menu=stats&type=familles"><i class="fas fa-chart-pie text-orange mr-2"></i> Meilleur vente par famille</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="?menu=stats&type=clients">Meilleur vente par client</a>
-                <a class="dropdown-item" href="?menu=stats&type=utilisateurs">Meilleur vente par utilisateur</a>
+                <a class="dropdown-item" href="?menu=stats&type=clients"><i class="fas fa-chart-line text-teal mr-2"></i> Meilleur vente par client</a>
+                <a class="dropdown-item" href="?menu=stats&type=utilisateurs"><i class="fas fa-chart-area text-purple mr-2"></i> Meilleur vente par utilisateur</a>
               </div>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">A propos</a>
+              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"><i class="fas fa-info-circle text-muted mr-1"></i> A propos</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="admin.php?deconnexion=true">Déconnexion</a>
+              <a class="nav-link" href="admin.php?deconnexion=true"><i class="fas fa-sign-out-alt text-danger mr-1"></i> Déconnexion</a>
             </li>
           </ul>
           <ul class="navbar-nav ml-auto">
             <li class="nav-item mr-3">
-              <span class="nav-link"><i class="fas fa-user"></i> <?php echo $_SESSION['Nom_utilisateur']; ?></span>
+              <span class="nav-link"><i class="fas fa-user text-warning mr-1"></i> <?php echo $_SESSION['Nom_utilisateur']; ?></span>
             </li>
             <li class="nav-item">
               <button id="theme-toggle" class="btn btn-outline-secondary btn-sm nav-link" title="Basculer vers le thème sombre">
-                <i class="fas fa-moon"></i>
+                <i class="fas fa-moon text-amber"></i>
               </button>
             </li>
           </ul>
@@ -194,7 +194,9 @@ if (isset($_GET['deconnexion'])) {
                 <a href="?menu=familles" class="text-decoration-none">
                   <div class="card h-100 text-center icon-card">
                     <div class="card-body">
-                      <i class="fas fa-boxes fa-3x mb-3"></i>
+                      <div class="icon-circle icon-familles">
+                        <i class="fas fa-boxes fa-2x"></i>
+                      </div>
                       <h5 class="card-title">Familles</h5>
                     </div>
                   </div>
@@ -206,7 +208,9 @@ if (isset($_GET['deconnexion'])) {
                 <a href="?menu=produits" class="text-decoration-none">
                   <div class="card h-100 text-center icon-card">
                     <div class="card-body">
-                      <i class="fas fa-cube fa-3x mb-3"></i>
+                      <div class="icon-circle icon-produits">
+                        <i class="fas fa-cube fa-2x"></i>
+                      </div>
                       <h5 class="card-title">Produits</h5>
                     </div>
                   </div>
@@ -218,7 +222,9 @@ if (isset($_GET['deconnexion'])) {
                 <a href="?menu=clients" class="text-decoration-none">
                   <div class="card h-100 text-center icon-card">
                     <div class="card-body">
-                      <i class="fas fa-users fa-3x mb-3"></i>
+                      <div class="icon-circle icon-clients">
+                        <i class="fas fa-users fa-2x"></i>
+                      </div>
                       <h5 class="card-title">Clients</h5>
                     </div>
                   </div>
@@ -230,7 +236,9 @@ if (isset($_GET['deconnexion'])) {
                 <a href="?menu=utilisateurs" class="text-decoration-none">
                   <div class="card h-100 text-center icon-card">
                     <div class="card-body">
-                      <i class="fas fa-user-tie fa-3x mb-3"></i>
+                      <div class="icon-circle icon-utilisateurs">
+                        <i class="fas fa-user-tie fa-2x"></i>
+                      </div>
                       <h5 class="card-title">Utilisateurs</h5>
                     </div>
                   </div>
@@ -242,7 +250,9 @@ if (isset($_GET['deconnexion'])) {
                 <a href="?menu=ventes&type=1" class="text-decoration-none">
                   <div class="card h-100 text-center icon-card">
                     <div class="card-body">
-                      <i class="fas fa-file-invoice fa-3x mb-3"></i>
+                      <div class="icon-circle icon-factures">
+                        <i class="fas fa-file-invoice fa-2x"></i>
+                      </div>
                       <h5 class="card-title">Factures</h5>
                     </div>
                   </div>
@@ -254,7 +264,9 @@ if (isset($_GET['deconnexion'])) {
                 <a href="?menu=ventes&type=2" class="text-decoration-none">
                   <div class="card h-100 text-center icon-card">
                     <div class="card-body">
-                      <i class="fas fa-file-alt fa-3x mb-3"></i>
+                      <div class="icon-circle icon-devis">
+                        <i class="fas fa-file-alt fa-2x"></i>
+                      </div>
                       <h5 class="card-title">Devis</h5>
                     </div>
                   </div>
@@ -266,7 +278,9 @@ if (isset($_GET['deconnexion'])) {
                 <a href="?menu=ventes&type=3" class="text-decoration-none">
                   <div class="card h-100 text-center icon-card">
                     <div class="card-body">
-                      <i class="fas fa-shopping-cart fa-3x mb-3"></i>
+                      <div class="icon-circle icon-bon-commande">
+                        <i class="fas fa-shopping-cart fa-2x"></i>
+                      </div>
                       <h5 class="card-title">Bon de commande</h5>
                     </div>
                   </div>
@@ -278,7 +292,9 @@ if (isset($_GET['deconnexion'])) {
                 <a href="?menu=ventes&type=4" class="text-decoration-none">
                   <div class="card h-100 text-center icon-card">
                     <div class="card-body">
-                      <i class="fas fa-truck fa-3x mb-3"></i>
+                      <div class="icon-circle icon-bon-livraison">
+                        <i class="fas fa-truck fa-2x"></i>
+                      </div>
                       <h5 class="card-title">Bon de livraison</h5>
                     </div>
                   </div>
@@ -290,7 +306,9 @@ if (isset($_GET['deconnexion'])) {
                 <a href="?menu=ventes" class="text-decoration-none">
                   <div class="card h-100 text-center icon-card">
                     <div class="card-body">
-                      <i class="fas fa-list fa-3x mb-3"></i>
+                      <div class="icon-circle icon-ventes">
+                        <i class="fas fa-list fa-2x"></i>
+                      </div>
                       <h5 class="card-title">Toutes les ventes</h5>
                     </div>
                   </div>
@@ -302,7 +320,9 @@ if (isset($_GET['deconnexion'])) {
                 <a href="?menu=stats&type=produits" class="text-decoration-none">
                   <div class="card h-100 text-center icon-card">
                     <div class="card-body">
-                      <i class="fas fa-chart-bar fa-3x mb-3"></i>
+                      <div class="icon-circle icon-stats-produits">
+                        <i class="fas fa-chart-bar fa-2x"></i>
+                      </div>
                       <h5 class="card-title">Stats Produits</h5>
                     </div>
                   </div>
@@ -314,7 +334,9 @@ if (isset($_GET['deconnexion'])) {
                 <a href="?menu=stats&type=familles" class="text-decoration-none">
                   <div class="card h-100 text-center icon-card">
                     <div class="card-body">
-                      <i class="fas fa-chart-pie fa-3x mb-3"></i>
+                      <div class="icon-circle icon-stats-familles">
+                        <i class="fas fa-chart-pie fa-2x"></i>
+                      </div>
                       <h5 class="card-title">Stats Familles</h5>
                     </div>
                   </div>
@@ -326,7 +348,9 @@ if (isset($_GET['deconnexion'])) {
                 <a href="?menu=stats&type=clients" class="text-decoration-none">
                   <div class="card h-100 text-center icon-card">
                     <div class="card-body">
-                      <i class="fas fa-chart-line fa-3x mb-3"></i>
+                      <div class="icon-circle icon-stats-clients">
+                        <i class="fas fa-chart-line fa-2x"></i>
+                      </div>
                       <h5 class="card-title">Stats Clients</h5>
                     </div>
                   </div>
@@ -338,7 +362,9 @@ if (isset($_GET['deconnexion'])) {
                 <a href="?menu=stats&type=utilisateurs" class="text-decoration-none">
                   <div class="card h-100 text-center icon-card">
                     <div class="card-body">
-                      <i class="fas fa-chart-area fa-3x mb-3"></i>
+                      <div class="icon-circle icon-stats-utilisateurs">
+                        <i class="fas fa-chart-area fa-2x"></i>
+                      </div>
                       <h5 class="card-title">Stats Utilisateurs</h5>
                     </div>
                   </div>
@@ -350,7 +376,9 @@ if (isset($_GET['deconnexion'])) {
                 <a href="index.php" class="text-decoration-none">
                   <div class="card h-100 text-center icon-card">
                     <div class="card-body">
-                      <i class="fas fa-cash-register fa-3x mb-3"></i>
+                      <div class="icon-circle icon-pos">
+                        <i class="fas fa-cash-register fa-2x"></i>
+                      </div>
                       <h5 class="card-title">Point de vente</h5>
                     </div>
                   </div>

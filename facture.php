@@ -158,7 +158,7 @@
 		<div class="header">
 			<div class="row" id="information_societe">
 				<div class="col logo">
-					<img src="https://mot.tn/img/logo-1711086870.jpg" width="100px">
+					<img src="img/logo_mot.jpg" width="100px">
 				</div>
 				<div class="carre" id="information_societe_col_1">
 					<div>MODERN Orthodontics Tunisia</div>
@@ -212,25 +212,25 @@
 							?>
 						</h2>
 					</div>
-					<div class="row gros">
-						<div class="col-1">
+					<div class="row gros text-center" style="margin: 0;">
+						<div class="col-3" style="padding: 2px 1px;">
 							N°
 						</div>
-						<div class="col">
+						<div class="col-5" style="padding: 2px 1px;">
 							Date
 						</div>
-						<div class="col">
+						<div class="col-4" style="padding: 2px 1px;">
 							N° Client
 						</div>
 					</div>
-					<div class="row">
-						<div class="col-1">
+					<div class="row text-center" style="margin: 0;">
+						<div class="col-3" style="padding: 2px 1px;">
 							<?php echo $ticket['id_insertion']; ?>
 						</div>
-						<div class="col">
-							<?php echo substr($ticket['date_insert'], 0, 10); ?>
+						<div class="col-5" style="padding: 2px 1px;">
+							<?php echo date("d/m/Y", strtotime($ticket['date_insert'])); ?>
 						</div>
-						<div class="col">
+						<div class="col-4" style="padding: 2px 1px;">
 							<?php echo $ticket['id_client']; ?>
 						</div>
 					</div>
@@ -325,7 +325,7 @@
 						</div>
 					</div><!--produits-->
 				<?php } ?>
-				<div class="row sousProduitsExtensible" id="produits" style="height:<?= (470 - (25 * $nbr_prod)) ?>px">
+				<div class="row sousProduitsExtensible" id="produits" style="height:<?= max(80, 310 - (25 * $nbr_prod)) ?>px">
 					<div class="col-5">
 					</div>
 					<div class="col">
@@ -387,9 +387,15 @@
 					<div class="col no_border">
 					</div>
 				</div><!--calcule3-->
-				<div class="row">
-					Arrêtée la présente FACTURE à la somme de :<br>
-					<?php echo Lettre(number_format($net, 3, '.', '')); ?>
+				<div class="row" style="margin-top: 5px; align-items: flex-start;">
+					<div class="col-7">
+						Arrêtée la présente FACTURE à la somme de :<br>
+						<b><?php echo Lettre(number_format($net, 3, '.', '')); ?></b>
+					</div>
+					<div class="col-5 text-right" style="text-align: right; margin-top: -30px;">
+						<div style="font-weight: bold; margin-bottom: 2px;">Signature & Cachet</div>
+						<img src="img/signature.png" style="max-width: 145px; height: auto; display: inline-block;">
+					</div>
 				</div>
 			</div><!--calcule-->
 		</div>
