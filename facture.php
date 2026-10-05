@@ -142,15 +142,41 @@
 		height: 320px;
 	}
 </style>
-<div class="print_options">
+<div class="print_options" style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
 	<button type="button" class="btn btn-danger" onclick="window.location.reload() ">
 		Quitter
 	</button>
-	<button type="button" class="btn btn-primary" onclick="$('.print_options').hide();window.print()">
+	<button type="button" class="btn btn-primary" onclick="$('.print_options').hide();window.print();$('.print_options').show();">
 		Imprimer
 	</button>
 	<button type="button" class="btn btn-success" onclick="PDF('to_pdf')">PDF</button>
+	<div style="display: inline-flex; align-items: center; gap: 6px; margin-left: 15px; background: #f8f9fa; padding: 6px 12px; border-radius: 6px; border: 1px solid #ced4da; cursor: pointer;">
+		<input type="checkbox" id="chk_signature" checked onchange="toggleSignature(this.checked)" style="cursor: pointer; width: 18px; height: 18px; margin: 0;">
+		<label for="chk_signature" style="cursor: pointer; user-select: none; margin: 0; font-weight: 600; color: #333;">Avec signature</label>
+	</div>
 </div>
+
+<script>
+function toggleSignature(show) {
+	if (show) {
+		$('#bloc_signature').show();
+	} else {
+		$('#bloc_signature').hide();
+	}
+	localStorage.setItem('facture_avec_signature', show ? 'true' : 'false');
+}
+
+$(document).ready(function() {
+	var pref = localStorage.getItem('facture_avec_signature');
+	if (pref === 'false') {
+		$('#chk_signature').prop('checked', false);
+		$('#bloc_signature').hide();
+	} else {
+		$('#chk_signature').prop('checked', true);
+		$('#bloc_signature').show();
+	}
+});
+</script>
 
 
 <div class="container">
@@ -392,7 +418,7 @@
 						Arrêtée la présente FACTURE à la somme de :<br>
 						<b><?php echo Lettre(number_format($net, 3, '.', '')); ?></b>
 					</div>
-					<div class="col-5 text-right" style="text-align: right; margin-top: -30px;">
+					<div id="bloc_signature" class="col-5 text-right" style="text-align: right; margin-top: -30px;">
 						<div style="font-weight: bold; margin-bottom: 2px;">Signature & Cachet</div>
 						<img src="img/signature.png" style="max-width: 145px; height: auto; display: inline-block;">
 					</div>
