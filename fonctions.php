@@ -7,17 +7,17 @@ session_start();
  //ini_set('error_reporting', E_ALL);
 
 try {
+  $is_local = (isset($_SERVER['HTTP_HOST']) && (strpos($_SERVER['HTTP_HOST'], 'localhost') !== false || strpos($_SERVER['HTTP_HOST'], '127.0.0.1') !== false)) || php_sapi_name() === 'cli';
 
-  $pdo = new PDO('mysql:host=127.0.0.1;dbname=mot_ptv;charset=utf8', 'root', '');
-
-  //$pdo = new PDO('mysql:host=localhost;dbname=mot_ptv;charset=utf8', 'root', '');
-
-  //$pdo = new PDO('mysql:host=localhost;dbname=pointdevente;charset=utf8', 'root', '22168875');
-
+  if ($is_local) {
+    // Environnement Local (Laragon)
+    $pdo = new PDO('mysql:host=127.0.0.1;dbname=mot_ptv;charset=utf8', 'root', '');
+  } else {
+    // Environnement Production (OVH)
+    $pdo = new PDO('mysql:host=mottnnkonbsmi.mysql.db;dbname=mottnnkonbsmi;charset=utf8', 'mottnnkonbsmi', 'Djerba2018');
+  }
 } catch (Exception $e) {
-
   die('Erreur : ' . $e->getMessage());
-
 }
 
 //extension pour les tableaux dans le cas de multi-app//

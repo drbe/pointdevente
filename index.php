@@ -322,7 +322,7 @@ input.addEventListener("keyup", function(event) {
 
 	<div id="position_gps"></div><center>
 
-	<div id="copy right" class="copy_right"><a href="admin.php">admin</a> Expert informatique 2026 - Synchro OVH OK <a href="admin.php?deconnexion=true">Déconnexion</a></div><center>
+	<div id="copy right" class="copy_right"><a href="admin.php">admin</a> Expert informatique 2026 <a href="admin.php?deconnexion=true">Déconnexion</a></div><center>
 
 	</div>
 
