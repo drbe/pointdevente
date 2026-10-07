@@ -20,7 +20,9 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           port: 21
-          server-dir: ${{ secrets.FTP_SERVER_DIR || '/www/pointdevente/' }}
+          protocol: ftp
+          security: loose
+          server-dir: ${{ secrets.FTP_SERVER_DIR || 'www/pointdevente/' }}
           exclude: |
             **/.git*
             **/.git*/**
