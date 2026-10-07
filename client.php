@@ -117,10 +117,10 @@ function edit(id)
   
   jQuery('#nom_produit_popup').html(jQuery('#nom_produit_'+id).html());
   jQuery('#id_produit_popup').html(id);
-  jQuery('.form-control').val("");
   jQuery('#p_prix_u').html(jQuery('#pu_'+id).html());
-  jQuery('#p_prix_t').html(jQuery('#pu_'+id).html());
-  jQuery('.form-control').val(jQuery('#qte_'+id).html());
+  jQuery('#p_prix_t').html(jQuery('#pt_'+id).html());
+  jQuery('#input_qte').val(jQuery('#qte_'+id).html());
+  jQuery('#input_qte').focus();
 }
 function close_pop()
 {
