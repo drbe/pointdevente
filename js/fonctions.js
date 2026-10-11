@@ -60,19 +60,23 @@ $(document).ready(function () {
 
 function sauvegarder_etat_pos() {
 	var produits = [];
-	$('[id^=produit_a_]').each(function () {
+	var seen = {};
+	$('#produit_achete table tr[id^=produit_a_]').each(function () {
 		var id = $(this).attr('id').replace('produit_a_', '');
-		var nom = $('#nom_produit_' + id).text();
-		var qte = $('#qte_' + id).text();
-		var pu = $('#pu_' + id).text();
-		var pt = $('#pt_' + id).text();
-		produits.push({
-			id: id,
-			nom: nom,
-			qte: qte,
-			pu: pu,
-			pt: pt
-		});
+		if (!seen[id]) {
+			seen[id] = true;
+			var nom = $(this).find('#nom_produit_' + id).text() || $('#nom_produit_' + id).first().text();
+			var qte = $(this).find('#qte_' + id).text() || $('#qte_' + id).first().text();
+			var pu = $(this).find('#pu_' + id).text() || $('#pu_' + id).first().text();
+			var pt = $(this).find('#pt_' + id).text() || $('#pt_' + id).first().text();
+			produits.push({
+				id: id,
+				nom: nom,
+				qte: qte,
+				pu: pu,
+				pt: pt
+			});
+		}
 	});
 
 	var id_client = $('#liste_client').val();
@@ -112,9 +116,20 @@ function restaurer_etat_pos() {
 		}
 
 		if (state.produits && state.produits.length > 0) {
+			// Clear any previous product rows everywhere
 			$('[id^=produit_a_]').remove();
 
+			// Deduplicate products by id to eliminate any previous duplicates
+			var seen = {};
+			var uniqueProduits = [];
 			$.each(state.produits, function (index, item) {
+				if (item && item.id && !seen[item.id]) {
+					seen[item.id] = true;
+					uniqueProduits.push(item);
+				}
+			});
+
+			$.each(uniqueProduits, function (index, item) {
 				var msg = '';
 				msg += '<tr class="couleur-0" onclick="edit(' + item.id + ')" id="produit_a_' + item.id + '" >';
 				msg += '<td class="col-5" id="nom_produit_' + item.id + '">' + item.nom + '</td>';
@@ -123,7 +138,7 @@ function restaurer_etat_pos() {
 				msg += '<td class="col text-right" id="pt_' + item.id + '" name="pt" >' + item.pt + '</td>';
 				msg += '</tr>';
 
-				$('.total').before(msg);
+				$('#produit_achete table tr.total').before(msg);
 			});
 
 			total_tableau();
@@ -198,7 +213,7 @@ function total_tableau() {
 	var p_total = 0.000;
 	var nbr = 0;
 	p_total = 0;
-	$.each($('[id^=pt_]'), function (index, value) {
+	$.each($('#produit_achete [id^=pt_]'), function (index, value) {
 		nbr++;
 		p_total += parseFloat($(value).text());
 	});
@@ -207,14 +222,14 @@ function total_tableau() {
 	$('#nbt').html(nbr);
 
 	u_total = 0;
-	$.each($('[id^=pu_]'), function (index, value) {
+	$.each($('#produit_achete [id^=pu_]'), function (index, value) {
 		u_total += parseFloat($(value).text());
 	});
 	$('#put').html(u_total.toFixed(3));
 
 
 	q_total = 0;
-	$.each($('[id^=qte_]'), function (index, value) {
+	$.each($('#produit_achete [id^=qte_]'), function (index, value) {
 		q_total += parseFloat($(value).text());
 	});
 	$('#qtet').html(q_total.toFixed(3));
@@ -236,18 +251,20 @@ function produit(id) {
 	msg += '<td class="col text-right" id="pt_' + id + '" name="pt" >' + msg_prix + '</td>';
 	msg += '</tr>';
 
-	if ($('#produit_a_' + id).length) {
-		$('#qte_' + id).html(parseFloat($('#qte_' + id).html()) + 1);
+	if ($('#produit_achete #produit_a_' + id).length) {
+		var row = $('#produit_achete #produit_a_' + id);
+		var currentQte = parseFloat(row.find('#qte_' + id).html()) + 1;
+		row.find('#qte_' + id).html(currentQte);
 
-		p_total = parseFloat($('#qte_' + id).html()) * parseFloat($('#pu_' + id).html());
-		$('#pt_' + id).html(p_total.toFixed(3));
+		p_total = currentQte * parseFloat(row.find('#pu_' + id).html());
+		row.find('#pt_' + id).html(p_total.toFixed(3));
 	} else {
-		$('.table_tete').after("" + msg + "");
-		$.each($('[id^=pt_]'), function (index, value) {
+		$('#produit_achete .table_tete').after("" + msg + "");
+		$.each($('#produit_achete [id^=pt_]'), function (index, value) {
 			pt_instan = parseFloat($(this).text());
 			$(this).text(pt_instan.toFixed(3));
 		});
-		$.each($('[id^=pu_]'), function (index, value) {
+		$.each($('#produit_achete [id^=pu_]'), function (index, value) {
 			pu_instan = parseFloat($(this).text());
 			$(this).text(pu_instan.toFixed(3));
 		});
@@ -291,7 +308,7 @@ function valider_command() {
 	Longitude = $('#Longitude_gps').html();
 	Altitude = $('#Altitude_gps').html();
 
-	$.each($('[id^=qte_]'), function (index, value) {
+	$.each($('#produit_achete [id^=qte_]'), function (index, value) {
 		id = $(value).attr("id");
 		id = id.split("_");
 		if (id[1] != "" || $(value).text() != "") { ch += id[1] + "," + $(value).text() + ";"; }

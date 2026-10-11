@@ -230,7 +230,7 @@ input.addEventListener("keyup", function(event) {
 
   <div class="col">
 
-  <h5 style="text-align: right;"><div class="total col prix_tot" id="total_general">0.000 TND</div></h5>
+  <h5 style="text-align: right;"><div class="col prix_tot" id="total_general">0.000 TND</div></h5>
 
 	<h4 onclick="cacher_produit_achete()">Liste produits</h4>
 
